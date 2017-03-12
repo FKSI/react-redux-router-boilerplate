@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { browserHistory } from 'react-router'
+import { ReduxAsyncConnect } from 'redux-connect'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
-import { loadCats } from './actions/cats'
 import Routes from './routes'
 import './index.css'
 
@@ -11,11 +11,12 @@ const rootEl = document.getElementById('root')
 
 const store = configureStore()
 
-store.dispatch(loadCats())
-
 ReactDOM.render(
  <Provider store={store}>
-   <Routes history={browserHistory} />
+  <Routes
+    history={browserHistory}
+    render={props => <ReduxAsyncConnect {...props}/>}
+  />
  </Provider>,
  rootEl
 )

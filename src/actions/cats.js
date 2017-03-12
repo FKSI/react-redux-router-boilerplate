@@ -8,6 +8,7 @@ export const loadCatsSuccess = cats => (
 export const loadCats = () => (
   dispatch => (
     catApi.getAllCats().then((cats) => {
+      console.log('🍩🍩🍩🍩🍩')
       dispatch(loadCatsSuccess(cats))
     }).catch((error) => {
       throw (error)

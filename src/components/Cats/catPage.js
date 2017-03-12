@@ -4,7 +4,6 @@ import { asyncConnect } from 'redux-connect'
 import CatList from './catList'
 import { loadCats } from '../../actions/cats'
 
-
 const CatPage = ({ cats }) => (
   <div>
     <h1>Cats</h1>
@@ -24,14 +23,8 @@ const glue = connect(
   })
 )
 
-export default glue(CatPage)
-
 const glueAsync = asyncConnect([{
   promise: ({ store: { dispatch } }) => dispatch(loadCats()),
 }])
 
-// const glueAsync = asyncConnect([{
-//   promise: ({ store: { dispatch, getState }, helpers }) => Promise.resolve({ id: 1, name: 'Borsch' })
-// }])
-//
-// export default glueAsync(glue(CatPage))
+export default glueAsync(glue(CatPage))
