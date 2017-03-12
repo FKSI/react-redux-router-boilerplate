@@ -1,0 +1,2 @@
+export const LOAD_CATS_SUCCESS = 'LOAD_CATS_SUCCESS'
+export const LOAD_CATS_FAIL = 'LOAD_CATS_FAIL'
