@@ -10,8 +10,7 @@ import './index.css'
 
 const rootEl = document.getElementById('root')
 const client = new ApiClient()
-const store = (configureStore(client))
-console.log('STORE', typeof store)
+const store = configureStore(client)
 
 ReactDOM.render(
  <Provider store={store}>

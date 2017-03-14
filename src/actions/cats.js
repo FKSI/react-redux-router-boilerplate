@@ -1,5 +1,5 @@
 import * as types from './actionTypes'
-import catApi from '../api/cats'
+import getAllCats from '../api/cats'
 
 export const loadCats = () => ({
   types: [
@@ -7,21 +7,16 @@ export const loadCats = () => ({
     types.loadCatsSucceeded,
     types.loadCatsFailed
   ],
-  promise: (getDispatch, { getState }) => {
+  promise: (client, { getState }) => {
     const state = getState()
-    console.log('😑😫😫😫😫', state)
     let promise = null
+
     if (!state.cats) {
-      promise = catApi.getAllCats().then((payload) => {
-        console.log('🍩🍩🍩🍩🍩', payload)
-        return payload
-      }).catch((error) => {
-        throw (error)
-      })
+      promise = getAllCats(client)
     } else {
-      console.log('😫😫😫😫😫')
       promise = Promise.resolve(state.cats)
     }
+
     return promise
   }
 })

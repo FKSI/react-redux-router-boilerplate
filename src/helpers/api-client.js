@@ -1,17 +1,11 @@
 import superagent from 'superagent'
 
-function formatUrl(path) {
-  const adjustedPath = path[0] !== '/' ? `/${path}` : path
-  return adjustedPath
-}
-
 export default class ApiClient {
   constructor(req) {
     ['get', 'post', 'put', 'patch', 'del'].forEach((method) => {
       this[method] = (path, { params, data } = {}) =>
         new Promise((resolve, reject) => {
-          // eslint-disable-next-line no-console
-          const request = superagent[method](formatUrl(path))
+          const request = superagent[method](path)
 
           if (params) {
             request.query(params)
