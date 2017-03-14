@@ -14,7 +14,7 @@ const CatPage = ({ cats }) => (
 )
 
 CatPage.propTypes = {
-  cats: PropTypes.array.isRequired
+  cats: PropTypes.array
 }
 
 const glue = connect(
@@ -22,7 +22,6 @@ const glue = connect(
     cats: state.cats
   })
 )
-
 const glueAsync = asyncConnect([{
   promise: ({ store: { dispatch } }) => dispatch(loadCats()),
 }])

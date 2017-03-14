@@ -1,10 +1,16 @@
-import { createStore, applyMiddleware } from 'redux'
+import { compose, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import apiMiddleware from './middleware/api'
 import rootReducer from '../reducers/'
 
-export default function configureStore() {
+export default (client, initialState) => {
+  const middleware = [
+    thunk,
+    apiMiddleware(client)
+  ]
   return createStore(
     rootReducer,
-    applyMiddleware(thunk)
+    initialState,
+    compose(applyMiddleware(...middleware))
   )
 }

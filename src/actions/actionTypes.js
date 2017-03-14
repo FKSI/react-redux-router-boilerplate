@@ -1,2 +1,5 @@
-export const LOAD_CATS_SUCCESS = 'LOAD_CATS_SUCCESS'
-export const LOAD_CATS_FAIL = 'LOAD_CATS_FAIL'
+import { createAction } from 'redux-act'
+
+export const loadCatsStarted = createAction('LOAD_CATS_STARTED')
+export const loadCatsSucceeded = createAction('LOAD_CATS_SUCCEEDED')
+export const loadCatsFailed = createAction('LOAD_CATS_FAILED')

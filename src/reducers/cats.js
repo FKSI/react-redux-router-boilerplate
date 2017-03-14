@@ -1,11 +1,14 @@
-import * as types from '../actions/actionTypes'
-import initialState from './initialState'
+import { createReducer } from 'redux-act'
+import {
+  loadCatsStarted,
+  loadCatsSucceeded,
+  loadCatsFailed
+} from '../actions/actionTypes'
 
-export default function catReducer(state = initialState.cats, action) {
-  switch (action.type) {
-    case types.LOAD_CATS_SUCCESS:
-      return action.cats
-    default:
-      return state
-  }
-}
+const catReducer = createReducer({
+  [loadCatsStarted]: state => state,
+  [loadCatsSucceeded]: (state, { result }) => result,
+  [loadCatsFailed]: state => state,
+}, null)
+
+export default catReducer

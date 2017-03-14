@@ -11,7 +11,7 @@ const CatList = ({ cats }) => (
 )
 
 CatList.propTypes = {
-  cats: PropTypes.array.isRequired
+  cats: PropTypes.array
 }
 
 export default CatList
