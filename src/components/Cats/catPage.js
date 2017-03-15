@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { asyncConnect } from 'redux-connect'
 import CatList from './catList'
-import { loadCats } from '../../actions/cats'
+import loadCats from '../../actions/loadCats'
 
 const CatPage = ({ cats }) => (
   <div>

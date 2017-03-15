@@ -1,7 +1,7 @@
 import * as types from './actionTypes'
 import getAllCats from '../api/cats'
 
-export const loadCats = () => ({
+export default () => ({
   types: [
     types.loadCatsStarted,
     types.loadCatsSucceeded,
