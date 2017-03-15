@@ -31,7 +31,7 @@
       "arrays": "only-multiline",
       "objects": "only-multiline",
       "imports": "ignore",
-      "exports": "always",
+      "exports": "only-multiline",
       "functions": "ignore",
     }],
     "quote-props": ["error", "consistent"],
