@@ -26,8 +26,9 @@ ReactDOM.render(
  rootEl
 )
 
-if (module.hot) {
+if (process.env.NODE_ENV !== 'production' && module.hot) {
   module.hot.accept('./components/App', () => {
+    // eslint-disable-next-line global-require
     const NextApp = require('./components/App').default
     ReactDOM.render(
       <NextApp />,
