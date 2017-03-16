@@ -1,18 +1,22 @@
-import React, { Component } from 'react'
-import classnames from 'classnames'
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 
-import './style.css'
+const About = ({ code }) => (
+  <div>
+    <h1>
+      About me {code}
+    </h1>
+  </div>
+)
 
-export default class About extends Component {
-
-  render() {
-    const { className, ...props } = this.props
-    return (
-      <div className={classnames('About', className)} {...props}>
-        <h1>
-          About me
-        </h1>
-      </div>
-    )
-  }
+About.propTypes = {
+  code: PropTypes.string
 }
+
+const glue = connect(
+  (state, props) => Object.assign({}, state, {
+    code: props.location.query.code
+  })
+)
+
+export default glue(About)

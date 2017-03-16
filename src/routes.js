@@ -8,7 +8,7 @@ import CatsPage from './components/Cats/catPage'
 const Routes = props => (
   <Router {...props}>
     <Route path="/" component={App} />
-    <Route path="/about" component={About} />
+    <Route path="/about(?:code)" component={About} />
     <Route path="/cats" component={CatsPage} />
     <Route path="*" component={NotFound} />
   </Router>
