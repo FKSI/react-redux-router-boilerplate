@@ -1,5 +1,6 @@
 import { compose, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 import apiMiddleware from './middleware/api'
 import rootReducer from '../reducers/'
 
@@ -11,6 +12,6 @@ export default (client, initialState) => {
   return createStore(
     rootReducer,
     initialState,
-    compose(applyMiddleware(...middleware))
+    composeWithDevTools(applyMiddleware(...middleware))
   )
 }
