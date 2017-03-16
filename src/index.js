@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { browserHistory } from 'react-router'
 import { ReduxAsyncConnect } from 'redux-connect'
 import { Provider } from 'react-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
 import ApiClient from './helpers/api-client'
 import configureStore from './store/configureStore'
 import Routes from './routes'
@@ -11,11 +12,12 @@ import './index.css'
 const rootEl = document.getElementById('root')
 const client = new ApiClient()
 const store = configureStore(client)
+const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
  <Provider store={store}>
   <Routes
-    history={browserHistory}
+    history={history}
     render={props =>
     <ReduxAsyncConnect
       {...props}
