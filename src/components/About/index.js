@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { asyncConnect } from 'redux-connect'
 import { connect } from 'react-redux'
 import getAccessToken from '../../actions/getAccessToken'
-import ClientOAuth2 from '../../helpers/auth'
+import auth from '../../helpers/auth'
 
 const About = ({
   authCode,
@@ -13,7 +13,7 @@ const About = ({
       About me
     </h1>
     <div>
-      <a href={ClientOAuth2.code.getUri()}>Authorize Me</a>
+      <a href={auth.myAXA.authorizationCodeGrantUri}>Authorize Me</a>
     </div>
     <br />
     <table>
