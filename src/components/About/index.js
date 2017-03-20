@@ -6,7 +6,7 @@ import ClientOAuth2 from '../../helpers/auth'
 
 const About = ({
   authCode,
-  accessToken
+  authData
 }) => (
   <div>
     <h1>
@@ -24,7 +24,7 @@ const About = ({
         </tr>
         <tr>
           <td>Access Token</td>
-          <td>{accessToken}</td>
+          <td>{authData ? authData.access_token : '' }</td>
         </tr>
       </tbody>
     </table>
@@ -33,13 +33,13 @@ const About = ({
 
 About.propTypes = {
   authCode: PropTypes.string,
-  accessToken: PropTypes.string
+  authData: PropTypes.object
 }
 
 const glue = connect(
   (state, props) => Object.assign({}, state, {
     authCode: props.location.query.code,
-    accessToken: state.authData.access_token
+    authData: state.authData
   })
 )
 

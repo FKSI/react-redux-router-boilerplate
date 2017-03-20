@@ -1,11 +1,11 @@
 import ClientOAuth2 from 'client-oauth2'
 
 const fooAuth = new ClientOAuth2({
-  clientId: 'demoapp',
-  authorizationUri: 'http://brentertainment.com/oauth2/lockdin/authorize',
+  clientId: 'AAAAAAAAAAAAAA',
+  authorizationUri: 'https://myaxasandbox.proto.agency/views/alexalogin.html',
   redirectUri: 'http://localhost:3000/about',
   scopes: [],
-  state: 'psesqsfs3saj3ebqeopc8h9ni2'
+  state: 'xyz'
 })
 
 

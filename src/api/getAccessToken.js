@@ -1,5 +1,12 @@
 const getAccessToken = (client, authorizationCode) => (
-  client.get(`http://brentertainment.com/oauth2/client/request_token/authorization_code?code=${authorizationCode}`)
+  client.post('https://myaxasandbox.proto.agency/api/oauth2/token', {
+    params: {},
+    data: {
+      code: authorizationCode,
+      grant_type: 'authorization_code'
+    },
+    type: 'form'
+  })
   .then(payload => payload)
   .catch(error => console.log(error))
 )
