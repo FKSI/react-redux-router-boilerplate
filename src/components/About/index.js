@@ -1,22 +1,52 @@
 import React, { PropTypes } from 'react'
+import { asyncConnect } from 'redux-connect'
 import { connect } from 'react-redux'
+import getAccessToken from '../../actions/getAccessToken'
+import auth from '../../helpers/auth'
 
-const About = ({ code }) => (
+const About = ({
+  authCode,
+  authData
+}) => (
   <div>
     <h1>
-      About me {code}
+      About me
     </h1>
+    <div>
+      <a href={auth.myAXA.authorizationCodeGrantUri}>Authorize Me</a>
+    </div>
+    <br />
+    <table>
+      <tbody>
+        <tr>
+          <td>Authorization Code</td>
+          <td>{authCode}</td>
+        </tr>
+        <tr>
+          <td>Access Token</td>
+          <td>{authData ? authData.access_token : '' }</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 )
 
 About.propTypes = {
-  code: PropTypes.string
+  authCode: PropTypes.string,
+  authData: PropTypes.object
 }
 
 const glue = connect(
   (state, props) => Object.assign({}, state, {
-    code: props.location.query.code
+    authCode: props.location.query.code,
+    authData: state.authData
   })
 )
 
-export default glue(About)
+const glueAsync = asyncConnect([{
+  promise: ({ store: { dispatch }, location: { query } }) =>
+    dispatch(getAccessToken(query.code)
+  ),
+}])
+
+export default glueAsync(glue(About))
