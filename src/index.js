@@ -1,13 +1,15 @@
+import { browserHistory } from 'react-router'
+import { Provider } from 'react-redux'
+import { ReduxAsyncConnect } from 'redux-connect'
+import { syncHistoryWithStore } from 'react-router-redux'
+import I18n from 'redux-i18n'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { browserHistory } from 'react-router'
-import { ReduxAsyncConnect } from 'redux-connect'
-import { Provider } from 'react-redux'
-import { syncHistoryWithStore } from 'react-router-redux'
+import { translations } from './translations'
+import './index.css'
 import ApiClient from './helpers/api-client'
 import configureStore from './store/configureStore'
 import Routes from './routes'
-import './index.css'
 
 const rootEl = document.getElementById('root')
 const client = new ApiClient()
@@ -16,14 +18,16 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
  <Provider store={store}>
-  <Routes
-    history={history}
-    render={props =>
-    <ReduxAsyncConnect
-      {...props}
-      helpers={{ client }}
-    />}
-  />
+   <I18n translations={translations}>
+     <Routes
+       history={history}
+       render={props =>
+       <ReduxAsyncConnect
+         {...props}
+         helpers={{ client }}
+       />}
+     />
+   </I18n>
  </Provider>,
  rootEl
 )

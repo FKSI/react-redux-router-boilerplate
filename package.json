@@ -16,6 +16,7 @@
     "redux-act": "^1.1.1",
     "redux-connect": "^5.0.0",
     "redux-devtools-extension": "^2.13.0",
+    "redux-i18n": "^1.2.1",
     "redux-thunk": "^2.2.0",
     "superagent": "^3.5.0"
   },
@@ -35,6 +36,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "extract_po": "i18n_extract",
+    "import_po": "i18n_import"
   }
 }

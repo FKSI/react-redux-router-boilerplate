@@ -6,7 +6,7 @@ import NotFound from './components/NotFound'
 import CatsPage from './components/Cats/catPage'
 
 const Routes = props => (
-  <Router {...props}>
+  <Router key={Math.random()} {...props}>
     <Route path="/" component={App} />
     <Route path="/about(?:code)" component={About} />
     <Route path="/cats" component={CatsPage} />
