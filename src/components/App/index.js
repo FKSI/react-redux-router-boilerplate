@@ -7,9 +7,9 @@ import './style.css'
 class App extends Component {
 
   render() {
-    const { className, ...props } = this.props
+    const { className } = this.props
     return (
-      <div className={classnames('App', className)} {...props}>
+      <div className={classnames('App', className)}>
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React boy</h2>
